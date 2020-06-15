@@ -16,11 +16,33 @@
 </style>
 
 <body>
-    <div id='box'></div>
-    <p class="kumar"></p>
+    <!-- <div id='box'></div>
+    <p class="kumar"></p> -->
+    <input type="button" value='我叫表单元素'>
+    
+    <!--快读写法 ul.tab#tab>li*3{第$个页卡} -->
+    <ul class="tab" id="tab">
+        <li>第1个页卡</li>
+        <li>第2个页卡</li>
+        <li>第3个页卡</li>
+    </ul>
+    <div>
+        <ul class="news">
+            <li>热门新闻</li>
+            <li>热门新闻</li>
+            <li>热门新闻</li>
+            <li>热门新闻</li>
+            <li>热门新闻</li>
+        </ul>
+    </div>
+    <div>第2个要展示的内容</div>
+    <div>第3个要展示的内容</div>
+
     <script>
         /* 获取元素的几种方法 */
-        let box = document.getElementById('box');
+        // let box = document.getElementById('box');
+        let tab=document.getElementsByClassName('tab')[0n];
+        console.log(tab);
       
      
     </script>

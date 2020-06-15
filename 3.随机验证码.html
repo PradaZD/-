@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>验证码</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="codeInp">
+    <span id="codeBox">haha</span>
+    <button id="changeCode">看不清换一张</button>
+    <script>
+        //第一阶段：直接操作DOM 想操作谁就获取谁；第二阶段：数据渲染视图
+        let codeInp = document.getElementById('codeInp'),
+            codeBox = document.getElementById('codeBox'),
+            changeCode = document.getElementById('changeCode');
+        /* 
+           queryCode：获取到四位随机的验证码，然后放到指定的盒子里
+           @params
+           @return
+         */
+        function queryCode() {
+            //准备获取范围的字符串0-9 a-z a-z
+            let area = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let result = "";
+            for (let i = 0; i < 4; i++) {
+                //每一次循环都获取一个随机的数字索引
+                let ran = Math.round(Math.random() * 61);
+                //记住这个公式 获取[n,m]之间的随机整数，Math.round(Math.random()*(m-n)+n)
+                result += area.charAt(ran);
+
+            }
+            //将四次随机获取到的字符串放到盒子中去，在这里也就是每次显示随机验证码的地方
+            codeBox.innerHTML = result;
+        }
+        //点击看不清按钮，需要重新执行方法生成新的随机码
+        changeCode.onclick = queryCode;//注意这里是函数本身，不是函数执行
+        /* 
+        可以理解成给onclick绑定了个事件函数，xx.onclick=function(){},当用户操作的时候才会触发这个函数，
+        在绑定的时候函数并没有执行，代码自上而下渲染的时候函数中的只是代码字符串。可以回过头去看看选项卡
+         */
+        
+        //文本框失去焦点的时候：验证用户输入的内容和验证码是否相同，给与相关的提示，如果不一样需要重新生成验证码
+        codeInp.onblur=function(){
+            //获取用户和验证码内容（表单元素.value/非表单元素.innerHtml 获取内容）
+            let val=codeInp.value;
+            let code=codeBox.innerHTML;
+            //不区分大小写的验证（都转成小写）
+            if(val.toLowerCase()===code.toLocaleLowerCase()){
+                alert('温馨提示：验证码输入成功')
+            }else{
+                alert('温馨提示：验证码输入有误，请重试！');
+                codeInp.value='';
+                //重新生成验证码
+                queryCode();
+                
+            }
+
+        }
+    </script>
+
+</body>
+
+</html>
