@@ -1,11 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>小时钟</title>
 </head>
+
 <body>
-    
+    <script>
+        // class parent {
+        //     constructor(x, y) {
+        //         this.x = x;
+        //         this.y = y
+        //     }
+        // }
+        // class child extends parent {
+        //     constructor(x, y, color) {
+        //         super(x,y)
+        //         this.color = color
+        //         console.log(this)
+        //         // this.color = color
+
+        //     }
+        // }
+        // var c = new child(1, 2, 'red')
+        // // console.log(c)
+
+
+        // function a(age) {
+        //     this.age = age
+        // }
+        // a.name = 'zengdan';
+        // a.fun = function () {
+        //     console.log('我正在运动')
+        // }
+
+        // var aa = new a(18);
+        // console.log(aa.name)
+        // console.log(aa.age)
+        //    console.log(aa.run())
+
+        //回顾ES5实现继承
+        /* function Phone(b, p) {
+            this.brand = b;
+            this.price = p;
+        }
+        Phone.prototype.call = function () {
+            console.log('我可以打电话')
+        }
+        function smartPhone(b, p, c, s) {
+            Phone.call(this, c, s);//继承父类构造函数中的属性
+            // console.log(this);//this指向的是smartPhone的实例对象
+            this.color = c;
+            this.size = s
+        }
+        smartPhone.prototype = Phone.prototype;//继承父类构造函数原型上的方法
+        smartPhone.prototype.photo = function () {
+            console.log('我可以拍照')
+        }
+        smartPhone.prototype.game = function () {
+            console.log('我可以玩游戏')
+        }
+        var huawei = new smartPhone('huawei', 3999, 'black', '6.5inch')
+        console.log(huawei) */
+
+
+        //ES6类的继承
+       /*  class Phone {
+            constructor(b, p) {
+                this.brand = b;
+                this.price = p
+            }
+            call() {
+                console.log('我可以打电话')
+            }
+        }
+        class smartPhone extends Phone {
+            constructor(b, p, c, s) {
+                super(b, p);//这一步可以成将父类中参数带过来了
+                //这里super()方法指的就是父类的构造函数,super中的this指向的是子类的实例化对象
+                this.color = c;
+                this.size = s;
+
+            }
+            photo() {
+                console.log('我可以拍照')
+            }
+            game() {
+                console.log('我可以玩游戏')
+            }
+        }
+        var a = new smartPhone('apple', 5999, '白色', '6.2inch')
+        // console.log(apple)
+        a.call()
+        a.game() */
+
+
+
+        //子类不能调用父类的同名方法，会报错，但是可以重写，就是写一个同名方法 将之覆盖？
+
+    </script>
 </body>
+
 </html>
